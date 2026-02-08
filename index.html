@@ -110,7 +110,8 @@ button {
 
 <!-- 🔒 BACKEND (Netlify Forms) -->
 <form name="response" method="POST" data-netlify="true" hidden>
-    <input type="text" name="answer">
+  <input type="hidden" name="form-name" value="response">
+  <input type="text" name="answer">
 </form>
 
 <div class="card" id="start">
@@ -152,14 +153,14 @@ const noTexts = [
 let index = 0;
 
 function sendAnswer(answer) {
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-            "form-name": "response",
-            "answer": answer
-        })
-    });
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      "form-name": "response",
+      "answer": answer
+    })
+  });
 }
 
 /* move NO button away */
